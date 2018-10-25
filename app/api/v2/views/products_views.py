@@ -23,7 +23,7 @@ class ProductList(Resource):
     @token_required
     @api.doc(security='apikey')
     @api.header('x-access-token', type=str, description='access token')
-    def post(user_id, self):
+    def post(self, user_id):
         """Creates a new Product."""
         args = product_parser.parse_args()
 
@@ -43,7 +43,7 @@ class ProductList(Resource):
     @token_required
     @api.doc(security='apikey')
     @api.header('x-access-token', type=str, description='access token')
-    def get(user_id, self):
+    def get(self, user_id):
         """List all Products"""
         products = Product.get_all(dict_cursor, user_id)
         if not products:
@@ -61,7 +61,7 @@ class ProductClass(Resource):
     @token_required
     @api.doc(security='apikey')
     @api.header('x-access-token', type=str, description='access token')
-    def get(user_id, self, productId):
+    def get(self, user_id, productId):
         """Displays a single Product."""
         product = Product.get_product_by_id(dict_cursor, productId)
         if product["user_id"] != str(user_id):
@@ -74,7 +74,7 @@ class ProductClass(Resource):
     @token_required
     @api.doc(security='apikey')
     @api.header('x-access-token', type=str, description='access token')
-    def put(user_id, self, productId):
+    def put(self, user_id, productId):
         """Updates a single Product."""
         args = update_product_parser.parse_args()
         product_name = args["product_name"]
@@ -95,7 +95,7 @@ class ProductClass(Resource):
     @token_required
     @api.doc(security='apikey')
     @api.header('x-access-token', type=str, description='access token')
-    def delete(user_id, self, productId):
+    def delete(self, user_id, productId):
         """Deletes a single Product."""
 
         Product.delete_product(dict_cursor, cursor, productId, user_id)

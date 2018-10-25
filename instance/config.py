@@ -6,7 +6,7 @@ class Config(object):
     DEBUG = False
     TESTING = False
     # SECRET_KEY = os.getenv('SECRET_KEY')
-    SECRET_KEY = "some-very-long-string-of-random-characters-CHANGE-TO-YOUR-LIKING"
+    # SECRET_KEY = "some-very-long-string-of-random-characters-CHANGE-TO-YOUR-LIKING"
 
     RESTPLUS_VALIDATE = True
     ERROR_404_HELP = False

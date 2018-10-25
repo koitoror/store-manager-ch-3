@@ -2,9 +2,9 @@ from flask_restplus import Api
 from flask import Blueprint
 
 api_v2 = Blueprint('api', __name__)
-from app.api.utils.udto import api as auth_ns
-from app.api.utils.pdto import api as products_ns
-from app.api.utils.sdto import api as sales_ns
+from app.api.v2.utils.udto import api as auth_ns
+from app.api.v2.utils.pdto import api as products_ns
+from app.api.v2.utils.sdto import api as sales_ns
 
 
 authorizations = {

@@ -3,8 +3,8 @@ from flask_testing import TestCase
 from run import app
 from app.database import Database
 
-from app.api.models.user import User
-from app.api.models.product import Product
+from app.api.v2.models.user import User
+from app.api.v2.models.product import Product
 
 
 class BaseTestCase(TestCase):

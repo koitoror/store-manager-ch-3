@@ -2,8 +2,8 @@ import unittest
 
 from app.tests.v2.base import BaseTestCase
 
-from app.api.models.user import User
-from app.api.models.product import Product
+from app.api.v2.models.user import User
+from app.api.v2.models.product import Product
 
 
 class TestProductModel(BaseTestCase):

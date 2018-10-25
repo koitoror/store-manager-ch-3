@@ -110,7 +110,14 @@ $ pytest --cov
 To test endpoints manually fire up postman and run the following endpoints
 
 
-### Products Endpoints
+### Auth Endpoints
+**EndPoint** | **Functionality**
+--- | ---
+POST  `/api/v2/auth/signup` | Register a user
+POST  `/api/v2/auth/login` | Logs in a user
+
+
+###  Endpoints
 **EndPoint** | **Functionality**
 --- | ---
 GET  `/api/v2/products` | Fetch all products
@@ -118,6 +125,7 @@ GET  `/api/v2/products/<productId>` | Fetch a single product
 POST  `/api/v2/products` | Create a product
 PUT  `/api/v2/products/<productId>` | Modify a product
 DELETE  `/api/v2/products/<productId>` | Delete a product
+
 
 ### Sales Endpoints
 **EndPoint** | **Functionality**
@@ -128,11 +136,6 @@ POST  `/api/v2/sales` | Create a sale
 PUT  `/api/v2/sales/<saleId>` | Modify a sale
 DELETE  `/api/v2/sales/<saleId>` | Delete a sale
 
-### Sales Endpoints
-**EndPoint** | **Functionality**
---- | ---
-POST  `/api/v2/auth/signup` | Register a user
-POST  `/api/v2/auth/login` | Logs in a user
 
 
 # API Documentation
@@ -141,4 +144,13 @@ Once app server is running you can view API documentation locally from
 http://127.0.0.1:5000/
 ```
 
-Once app server is running you can view on HEROKU the [API documentation here](https://store-manager-ke.herokuapp.com)
+Once app server is running you can view * VERSION 1 * on HEROKU the [API documentation here](https://store-manager-ke.herokuapp.com)
+
+
+Once app server is running you can view * VERSION 2 * on HEROKU the [API documentation here](https://store-manager-ke-v2.herokuapp.com/)
+
+
+
+
+
+

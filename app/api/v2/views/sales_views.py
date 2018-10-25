@@ -14,7 +14,7 @@ cursor = conn.cursor
 dict_cursor = conn.dict_cursor
 
 @api.route("/sales")
-class ProductList(Resource):
+class SaleList(Resource):
     """Displays a list of all products and lets you POST to add new products."""
 
     @api.expect(post_sales)
@@ -53,11 +53,11 @@ class ProductList(Resource):
 @api.route("/sales/<int:saleId>")
 @api.param("saleId", "sale identifier")
 @api.response(404, 'Sale not found')
-class ProductClass(Resource):
+class SaleClass(Resource):
     """Displays a single product item and lets you delete them."""
 
     @api.marshal_with(sales)
-    @api.doc('get one sale')
+    @api.doc('get one product')
     @token_required
     @api.doc(security='apikey')
     @api.header('x-access-token', type=str, description='access token')

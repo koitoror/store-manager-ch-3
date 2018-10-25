@@ -3,7 +3,7 @@ from flask import Blueprint
 
 from app.api.v2.views.user_views import api as auth_ns
 from app.api.v2.views.products_views import api as products_ns
-from app.api.v2.views.sales_views import api as sales_ns
+# from app.api.v2.views.sales_views import api as sales_ns
 
 
 api_v2 = Blueprint('api', __name__)
@@ -29,4 +29,4 @@ api = Api(
 # del api.namespaces[0]
 api.add_namespace(auth_ns, path="/api/v2/auth")
 api.add_namespace(products_ns, path="/api/v2")
-api.add_namespace(sales_ns, path="/api/v2")
+# api.add_namespace(sales_ns, path="/api/v2")

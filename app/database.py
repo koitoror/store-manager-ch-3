@@ -4,21 +4,21 @@ import os
 import psycopg2
 import psycopg2.extras
 import urllib.parse as urlparse
-from instance import create_app
+# from instance import create_app
 
 
-app = create_app(config_name=os.getenv("FLASK_CONFIG"))
+# app = create_app(config_name=os.getenv("FLASK_CONFIG"))
 
 class Database(object):
     """Class for creating the database
     schema and establishing connection.
     """
     def __init__(self, testing=None):
-        with app.app_context():
-            self.connection = self.connect_db(testing=testing)
-            # self.connection.autocommit = True
-            self.cursor = self.connection.cursor()
-            self.dict_cursor = self.connection.cursor(cursor_factory=psycopg2.extras.DictCursor)
+        # with app.app_context():
+        self.connection = self.connect_db(testing=testing)
+        # self.connection.autocommit = True
+        self.cursor = self.connection.cursor()
+        self.dict_cursor = self.connection.cursor(cursor_factory=psycopg2.extras.DictCursor)
 
     # def connect(self, testing=None):
     #     # db_uri = os.getenv("TEST_DB_URL") if testing else os.getenv("DATABASE_URL")

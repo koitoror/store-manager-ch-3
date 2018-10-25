@@ -10,12 +10,12 @@ class Product(object):
     
     @staticmethod
     def add_product(cursor, product_name, product_quantity, user_id):
-        query = "INSERT INTO store_manager (product_name, product_quantity, user_id) VALUES (%s, %s, %s)"
+        query = "INSERT INTO d4501hveeam6gl (product_name, product_quantity, user_id) VALUES (%s, %s, %s)"
         cursor.execute(query, (product_name, product_quantity, user_id))
 
     @staticmethod
     def get_product_by_id(dict_cursor, productId):
-        query_string="SELECT * FROM store_manager WHERE id=%s"
+        query_string="SELECT * FROM d4501hveeam6gl WHERE id=%s"
         dict_cursor.execute(query_string, [productId])
         data = dict_cursor.fetchone()
         if not data:
@@ -29,7 +29,7 @@ class Product(object):
         data = Product.get_product_by_id(dict_cursor, productId)
         if data["user_id"] != str(user_id):
             api.abort(401, "Unauthorized")
-        query = "UPDATE store_manager SET product_name=%s, product_quantity=%s WHERE (id=%s)"
+        query = "UPDATE d4501hveeam6gl SET product_name=%s, product_quantity=%s WHERE (id=%s)"
         cursor.execute(query, (product_name, product_quantity, productId))
 
     @staticmethod   
@@ -37,16 +37,16 @@ class Product(object):
         data = Product.get_product_by_id(dict_cursor, productId)
         if data["user_id"] != str(user_id):
             api.abort(401, "Unauthorized")
-        query = "DELETE FROM store_manager WHERE id=%s"
+        query = "DELETE FROM d4501hveeam6gl WHERE id=%s"
         dict_cursor.execute(query, [productId])
 
     @staticmethod   
     def get_all(dict_cursor, user_id):
-        query_string="SELECT * FROM store_manager WHERE user_id = %s"
+        query_string="SELECT * FROM d4501hveeam6gl WHERE user_id = %s"
         dict_cursor.execute(query_string, [user_id])
-        store_manager = dict_cursor.fetchall()
+        d4501hveeam6gl = dict_cursor.fetchall()
         results = []
-        for product in store_manager:
+        for product in d4501hveeam6gl:
             obj = {
                 "id":product["id"],
                 "product_name":product["product_name"],

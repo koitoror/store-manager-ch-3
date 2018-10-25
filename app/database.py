@@ -7,14 +7,14 @@ import urllib.parse as urlparse
 
 
 
-# app = create_app(config_name=os.getenv("FLASK_CONFIG"))
+app = create_app(config_name=os.getenv("FLASK_CONFIG"))
 
 class Database(object):
     """Class for creating the database
     schema and establishing connection.
     """
     def __init__(self, testing=None):
-        # with app.app_context():
+        with app.app_context():
         self.connection = self.connect_db(testing=testing)
         self.connection.autocommit = True
         self.cursor = self.connection.cursor()

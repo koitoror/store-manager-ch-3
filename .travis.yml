@@ -1,0 +1,26 @@
+language: python
+python:
+  - "3.5"
+# command to install dependencies
+install:
+  - "pip install -r requirements.txt"
+  - "pip install coveralls"
+
+before_script:
+  - psql -c 'create database diary_api;' -U postgres
+  - psql -c "create user imire with password 'pass@word1' createdb;" -U postgres
+  - python app/database.py
+
+
+# command to run tests
+script:
+  - pytest --cov
+branches:
+  only:
+  - ft-api-endpoints-v1-159065510
+  - ch-api-v2-enpoints-159268511
+  - develop
+  - master
+  - challenge3
+after_success:
+  - coveralls

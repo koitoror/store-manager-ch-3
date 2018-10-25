@@ -2,12 +2,18 @@
 from flask_restplus import Resource
 
 # local imports
+
+# from ..utils.products_model import api, products, post_products, product_parser, update_product_parser
+# from ..utils.decorators import token_required
+# from ..utils.validators import validate_product_data, validate_update_product
+# from ..models.model import Product
+# from app.database import Database
+
 from ..utils.pdto import api, products, post_products, product_parser, update_product_parser
 from ..utils.decorators import token_required
 from ..utils.validators import validate_product_data, validate_update_product
 from ..models.product import Product
 from app.database import Database
-
 
 conn = Database()
 cursor = conn.cursor
@@ -23,7 +29,7 @@ class ProductList(Resource):
     @token_required
     @api.doc(security='apikey')
     @api.header('x-access-token', type=str, description='access token')
-    def post(self, user_id):
+    def post(user_id, self):
         """Creates a new Product."""
         args = product_parser.parse_args()
 
@@ -43,7 +49,7 @@ class ProductList(Resource):
     @token_required
     @api.doc(security='apikey')
     @api.header('x-access-token', type=str, description='access token')
-    def get(self, user_id):
+    def get(user_id, self):
         """List all Products"""
         products = Product.get_all(dict_cursor, user_id)
         if not products:
@@ -61,7 +67,7 @@ class ProductClass(Resource):
     @token_required
     @api.doc(security='apikey')
     @api.header('x-access-token', type=str, description='access token')
-    def get(self, user_id, productId):
+    def get(user_id, self, productId):
         """Displays a single Product."""
         product = Product.get_product_by_id(dict_cursor, productId)
         if product["user_id"] != str(user_id):
@@ -74,7 +80,7 @@ class ProductClass(Resource):
     @token_required
     @api.doc(security='apikey')
     @api.header('x-access-token', type=str, description='access token')
-    def put(self, user_id, productId):
+    def put(user_id, self, productId):
         """Updates a single Product."""
         args = update_product_parser.parse_args()
         product_name = args["product_name"]
@@ -95,7 +101,7 @@ class ProductClass(Resource):
     @token_required
     @api.doc(security='apikey')
     @api.header('x-access-token', type=str, description='access token')
-    def delete(self, user_id, productId):
+    def delete(user_id, self, productId):
         """Deletes a single Product."""
 
         Product.delete_product(dict_cursor, cursor, productId, user_id)

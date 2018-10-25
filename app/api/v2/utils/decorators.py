@@ -2,7 +2,7 @@ from functools import wraps
 
 from flask import request, current_app
 import jwt
-from ..utils.pdto import api
+from ..utils.udto import api
 
 
 def token_required(f):

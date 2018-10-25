@@ -1,3 +1,5 @@
+"""Main Application Product Point."""
+
 # third-party imports
 from flask import Flask, jsonify
 
@@ -5,6 +7,11 @@ from flask import Flask, jsonify
 from .config import app_config
 
 def create_app(config_name):
+    """Enables having instances of the
+    application with different settings
+    """
+
+    # initializing the app
     app = Flask(__name__)
     app.config.from_object(app_config[config_name])
 

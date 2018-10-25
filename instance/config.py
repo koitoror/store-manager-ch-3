@@ -7,7 +7,6 @@ class Config(object):
     TESTING = False
     # SECRET_KEY = os.getenv('SECRET_KEY')
     SECRET_KEY="some-very-long-string-of-random-characters-CHANGE-TO-YOUR-LIKING"
-
     RESTPLUS_VALIDATE = True
     ERROR_404_HELP = False
     # db_name = os.getenv("DATABASE")

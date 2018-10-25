@@ -15,7 +15,7 @@ class Database(object):
     """
     def __init__(self, testing=None):
         # with app.app_context():
-        self.connection = self.connect(testing=testing)
+        self.connection = self.connect_db(testing=testing)
         self.connection.autocommit = True
         self.cursor = self.connection.cursor()
         self.dict_cursor = self.connection.cursor(cursor_factory=psycopg2.extras.DictCursor)

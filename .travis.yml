@@ -7,8 +7,8 @@ install:
   - "pip install coveralls"
 
 before_script:
-  - psql -c 'create database diary_api;' -U postgres
-  - psql -c "create user imire with password 'pass@word1' createdb;" -U postgres
+  - psql -c 'create database store_manager;' -U postgres
+  - psql -c "create user kamar with password 'pass@word1' createdb;" -U postgres
   - python app/database.py
 
 
@@ -17,8 +17,8 @@ script:
   - pytest --cov
 branches:
   only:
-  - ft-api-endpoints-v1-159065510
-  - ch-api-v2-enpoints-159268511
+  - ch-tests-set-up-161443803
+  - ft-writing-tests-setting-up-161443803
   - develop
   - master
   - challenge3

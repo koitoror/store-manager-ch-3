@@ -36,7 +36,7 @@ class Database(object):
             host="ec2-107-22-189-136.compute-1.amazonaws.com", 
             port="5432",
         )
-        
+
     #     return psycopg2.connect(
     #         database=database,
     #         user=role,
@@ -107,5 +107,5 @@ class Database(object):
 
 if __name__=="__main__":
     db = Database()
-    db.connect_db()
+    # db.connect_db()
     db.create_tables()

@@ -18,7 +18,7 @@ class ProductList(Resource):
     """Displays a list of all products and lets you POST to add new products."""
 
     @api.expect(post_products)
-    @api.doc('adds an product')
+    @api.doc('adds a product')
     @api.response(201, "Created")
     @token_required
     @api.doc(security='apikey')
@@ -69,7 +69,7 @@ class ProductClass(Resource):
         return product
 
 
-    @api.doc('updates an product')
+    @api.doc('updates a product')
     @api.expect(post_products)
     @token_required
     @api.doc(security='apikey')
@@ -90,7 +90,7 @@ class ProductClass(Resource):
         Product.modify_product(dict_cursor, cursor, args["product_name"], args["product_quantity"], productId, user_id)
         return {"message": "Updated successfully", "product":product}
 
-    @api.doc('deletes an product')
+    @api.doc('deletes a product')
     @api.response(204, 'Product Deleted')
     @token_required
     @api.doc(security='apikey')

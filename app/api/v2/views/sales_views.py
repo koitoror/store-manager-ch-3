@@ -13,12 +13,12 @@ conn = Database()
 cursor = conn.cursor
 dict_cursor = conn.dict_cursor
 
-@api.route("/products")
+@api.route("/sales")
 class ProductList(Resource):
     """Displays a list of all products and lets you POST to add new products."""
 
     @api.expect(post_sales)
-    @api.doc('adds an product')
+    @api.doc('adds a product')
     @api.response(201, "Created")
     @token_required
     @api.doc(security='apikey')
@@ -37,7 +37,7 @@ class ProductList(Resource):
         Sale.add_product(cursor, product_name, product_quantity, user_id)
         return {"message": "Product added successfully"}, 201
 
-    @api.doc("list_products")
+    @api.doc("list_sales")
     @api.response(404, "Products Not Found")
     @api.marshal_list_with(sales, envelope="products")
     @token_required
@@ -50,14 +50,14 @@ class ProductList(Resource):
             api.abort(404, "No products for user {}".format(user_id))
         return products
 
-@api.route("/products/<int:productId>")
-@api.param("productId", "product identifier")
-@api.response(404, 'Product not found')
+@api.route("/sales/<int:saleId>")
+@api.param("saleId", "sale identifier")
+@api.response(404, 'Sale not found')
 class ProductClass(Resource):
     """Displays a single product item and lets you delete them."""
 
     @api.marshal_with(sales)
-    @api.doc('get one product')
+    @api.doc('get one sale')
     @token_required
     @api.doc(security='apikey')
     @api.header('x-access-token', type=str, description='access token')
@@ -69,7 +69,7 @@ class ProductClass(Resource):
         return product
 
 
-    @api.doc('updates an product')
+    @api.doc('updates a sale')
     @api.expect(post_sales)
     @token_required
     @api.doc(security='apikey')
@@ -90,7 +90,7 @@ class ProductClass(Resource):
         Sale.modify_product(dict_cursor, cursor, args["product_name"], args["product_quantity"], productId, user_id)
         return {"message": "Updated successfully", "product":product}
 
-    @api.doc('deletes an product')
+    @api.doc('deletes a sale')
     @api.response(204, 'Product Deleted')
     @token_required
     @api.doc(security='apikey')

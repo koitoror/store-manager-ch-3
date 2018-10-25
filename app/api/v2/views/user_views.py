@@ -3,7 +3,7 @@ from flask_restplus import Resource
 from flask_bcrypt import Bcrypt
 
 # local imports
-# from app.database import Database
+from app.database import Database
 
 from ..models.user import User
 from ..utils.udto import api, register_parser, login_model, login_parser, register_model

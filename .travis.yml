@@ -27,4 +27,3 @@ after_success:
 
 env:
   - FLASK_CONFIG='development'
-  - DATABASE_URL='postgres://hpwkkcsgckkgvk:2e5282386e7f2a3e1faef5558102a71b67019dc02844d1b16a5374b8e354be7a@ec2-107-22-189-136.compute-1.amazonaws.com:5432/d4501hveeam6gl'

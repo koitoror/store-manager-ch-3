@@ -26,4 +26,6 @@ after_success:
   - coveralls
 
 env:
-  - FLASK_CONFIG='development'
+  global:
+    - FLASK_CONFIG='development'
+    - SECRET_KEY = "some-very-long-string-of-random-characters-CHANGE-TO-YOUR-LIKING"

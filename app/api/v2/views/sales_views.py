@@ -2,7 +2,7 @@
 from flask_restplus import Resource
 
 # local imports
-from ..utils.sdto import api, products, post_products, product_parser, update_product_parser
+from ..utils.sdto import api, sales, post_sales, product_parser, update_product_parser
 from ..utils.decorators import token_required
 from ..utils.validators import validate_product_data, validate_update_product
 from ..models.sale import Sale

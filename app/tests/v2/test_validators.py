@@ -1,6 +1,6 @@
 import json
 from app.tests.v2.base import BaseTestCase
-from app.tests.helpers import register_user, login_user
+from app.tests.v2.helpers import register_user, login_user
 
 class TestValidatorsCase(BaseTestCase):
     "Class for testing validators"

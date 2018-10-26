@@ -108,5 +108,5 @@ class Database(object):
 if __name__=="__main__":
     db = Database()
     # db.connect_db()
-    # db.create_tables()
-    db.drop_all()
+    db.create_tables()
+    # db.drop_all()

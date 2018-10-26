@@ -82,7 +82,7 @@ class Database(object):
                 user_id INTEGER NOT NULL,
                 product_name VARCHAR(255) NOT NULL,
                 created_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP,
-                product_quantity text,
+                product_category text,
                 FOREIGN KEY (user_id)
                     REFERENCES users (id)
                     ON UPDATE CASCADE ON DELETE CASCADE

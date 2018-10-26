@@ -31,31 +31,31 @@ class BaseTestCase(TestCase):
         self.product_obj = Product(
             product_id=1,
             product_name="first product model test",
-            product_quantity='testing is very essential',
+            product_category='testing is very essential',
             user_id="1"
         )
         self.product = json.dumps(
             {
                 "product_name": "first test",
-                "product_quantity": "tdd is awesome"
+                "product_category": "tdd is awesome"
             }
         )
         self.product_no_product_name = json.dumps(
             {
                 "product_name": "",
-                "product_quantity": "tdd is awesome"
+                "product_category": "tdd is awesome"
             }
         )
-        self.product_no_product_quantity = json.dumps(
+        self.product_no_product_category = json.dumps(
             {
                 "product_name": "first test",
-                "product_quantity": ""
+                "product_category": ""
             }
         )
         self.update_product = json.dumps(
             {
                 "product_name": "first edition",
-                "product_quantity": "tdd is very awesome"
+                "product_category": "tdd is very awesome"
             }
         )
 

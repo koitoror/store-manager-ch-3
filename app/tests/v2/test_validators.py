@@ -188,8 +188,8 @@ class TestValidatorsCase(BaseTestCase):
             self.assertEqual(rv.status_code, 400)
             self.assertIn(b"product_name is a required field", rv.data)
 
-    def test_product_quantity_is_required(self):
-        "Test product_quantity is a required property"
+    def test_product_category_is_required(self):
+        "Test product_category is a required property"
         with self.client:
             res = register_user(self)
             self.assertTrue(res.status_code, 201)
@@ -203,36 +203,13 @@ class TestValidatorsCase(BaseTestCase):
                     "x-access-token": access_token,
                     "content-type": "application/json"
                 },
-                data=self.product_no_product_quantity
+                data=self.product_no_product_category
                 )
             self.assertEqual(rv.status_code, 400)
-            self.assertIn(b"product_quantity is a required field", rv.data)
+            self.assertIn(b"product_category is a required field", rv.data)
 
-    def test_non_digit_product_quantity(self):
-        "test for non-digig product_quantity."
-        with self.client:
-            res = register_user(self)
-            self.assertTrue(res.status_code, 201)
-            res = login_user(self)
-            access_token = res.get_json()['token']
-
-            # create product by making a POST request
-            rv = self.client.post(
-                'api/v2/products',
-                headers={
-                    "x-access-token": access_token,
-                    "content-type": "application/json"
-                },
-                data=json.dumps(
-                    {"product_name": "first test",
-                    "product_quantity": "11111111"
-                    })
-                )
-            self.assertEqual(rv.status_code, 400)
-            self.assertIn(b"Enter non digit product_quantity", rv.data)
-
-    def test_valid_product_quantity(self):
-        "test product_quantity entered in valid format"
+    def test_non_digit_product_category(self):
+        "test for non-digig product_category."
         with self.client:
             res = register_user(self)
             self.assertTrue(res.status_code, 201)
@@ -248,11 +225,34 @@ class TestValidatorsCase(BaseTestCase):
                 },
                 data=json.dumps(
                     {"product_name": "first test",
-                    "product_quantity": "    "
+                    "product_category": "11111111"
                     })
                 )
             self.assertEqual(rv.status_code, 400)
-            self.assertIn(b"Enter valid product_quantity", rv.data)
+            self.assertIn(b"Enter non digit product_category", rv.data)
+
+    def test_valid_product_category(self):
+        "test product_category entered in valid format"
+        with self.client:
+            res = register_user(self)
+            self.assertTrue(res.status_code, 201)
+            res = login_user(self)
+            access_token = res.get_json()['token']
+
+            # create product by making a POST request
+            rv = self.client.post(
+                'api/v2/products',
+                headers={
+                    "x-access-token": access_token,
+                    "content-type": "application/json"
+                },
+                data=json.dumps(
+                    {"product_name": "first test",
+                    "product_category": "    "
+                    })
+                )
+            self.assertEqual(rv.status_code, 400)
+            self.assertIn(b"Enter valid product_category", rv.data)
 
     def test_valid_product_name(self):
         "test product_name entered in valid format"
@@ -271,7 +271,7 @@ class TestValidatorsCase(BaseTestCase):
                 },
                 data=json.dumps(
                     {"product_name": "    ",
-                    "product_quantity": "this is very awsome"
+                    "product_category": "this is very awsome"
                     })
                 )
             self.assertEqual(rv.status_code, 400)
@@ -294,7 +294,7 @@ class TestValidatorsCase(BaseTestCase):
                 },
                 data=json.dumps(
                     {"product_name": "thisisthelongestproduct_nameeveranitshouldbemorethanfiftycharacterslong",
-                    "product_quantity": "this is very awsome"
+                    "product_category": "this is very awsome"
                     })
                 )
             self.assertEqual(rv.status_code, 400)

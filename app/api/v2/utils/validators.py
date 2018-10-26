@@ -58,9 +58,9 @@ def validate_product_data(product):
     if product['product_name'] == '':
         return {'warning': 'product_name is a required field'}, 400
 
-    # Check for empty product_quantity
-    elif product['product_quantity'] == '':
-        return {'warning': 'product_quantity is a required field'}, 400
+    # Check for empty product_category
+    elif product['product_category'] == '':
+        return {'warning': 'product_category is a required field'}, 400
     
     # check for a valid product_name
     if product['product_name'].strip(' ').isdigit():
@@ -69,12 +69,12 @@ def validate_product_data(product):
     if not product["product_name"].strip():
         return {"warning": "Enter a valid product_name"}, 400
     
-    # check for valid product_quantity
-    if product['product_quantity'].strip(' ').isdigit():
-        return {'warning': 'Enter non digit product_quantity'}, 400
+    # check for valid product_category
+    if product['product_category'].strip(' ').isdigit():
+        return {'warning': 'Enter non digit product_category'}, 400
 
-    if not product["product_quantity"].strip():
-        return {"warning": "Enter valid product_quantity"}, 400
+    if not product["product_category"].strip():
+        return {"warning": "Enter valid product_category"}, 400
 
     # Check for large/long inputs
     if len(product['product_name']) > 50:
@@ -88,9 +88,9 @@ def validate_update_product(product, data):
     if data['product_name'] == '':
         data['product_name'] = product['product_name']
 
-    # Check for empty product_quantity
-    if data['product_quantity'] == '':
-        data['product_quantity'] = product['product_quantity']
+    # Check for empty product_category
+    if data['product_category'] == '':
+        data['product_category'] = product['product_category']
     
     # check for a valid product_name
     if data['product_name'].strip(' ').isdigit():
@@ -99,12 +99,12 @@ def validate_update_product(product, data):
     if not data["product_name"].strip():
         return {"warning": "Enter a valid product_name"}, 400
     
-    # check for valid product_quantity
-    if data['product_quantity'].strip(' ').isdigit():
-        return {'warning': 'Enter non digit product_quantity'}, 400
+    # check for valid product_category
+    if data['product_category'].strip(' ').isdigit():
+        return {'warning': 'Enter non digit product_category'}, 400
 
-    if not data["product_quantity"].strip():
-        return {"warning": "Enter valid product_quantity"}, 400
+    if not data["product_category"].strip():
+        return {"warning": "Enter valid product_category"}, 400
 
     # Check for large/long inputs
     if len(data['product_name']) > 50:

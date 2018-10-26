@@ -33,8 +33,8 @@ class SaleList(Resource):
             return invalid_data
 
         product_name = args["product_name"]
-        product_quantity = args["product_quantity"]
-        Sale.add_product(cursor, product_name, product_quantity, user_id)
+        product_category = args["product_category"]
+        Sale.add_product(cursor, product_name, product_category, user_id)
         return {"message": "Product added successfully"}, 201
 
     @api.doc("list_sales")
@@ -78,8 +78,8 @@ class SaleClass(Resource):
         """Updates a single Product."""
         args = update_product_parser.parse_args()
         product_name = args["product_name"]
-        product_quantity = args["product_quantity"]
-        product = {"product_name": product_name, "product_quantity":product_quantity}
+        product_category = args["product_category"]
+        product = {"product_name": product_name, "product_category":product_category}
         product = Sale.get_product_by_id(dict_cursor, productId)
 
         invalid_data = validate_update_product(product, args)
@@ -87,7 +87,7 @@ class SaleClass(Resource):
         if invalid_data:
             return invalid_data
         
-        Sale.modify_product(dict_cursor, cursor, args["product_name"], args["product_quantity"], productId, user_id)
+        Sale.modify_product(dict_cursor, cursor, args["product_name"], args["product_category"], productId, user_id)
         return {"message": "Updated successfully", "product":product}
 
     @api.doc('deletes a sale')

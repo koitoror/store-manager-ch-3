@@ -24,5 +24,3 @@ def create_app(config_name):
         return jsonify(message='Sorry!Something went worng. Try another time', error='SERVER DOWN'), 500
 
     return app
-
-
